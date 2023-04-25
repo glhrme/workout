@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuthUI
+import FirebaseOAuthUI
 
 class LoginViewController: BaseViewController<LoginView> {
     override func viewDidLoad() {

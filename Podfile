@@ -6,5 +6,10 @@ target 'workout' do
   use_frameworks!
 
   # Pods for workout
-
+  pod 'FirebaseUI'
+  pod 'FirebaseAnalytics'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'FirebaseStorage'
+  pod 'FirebaseCrashlytics'
 end
