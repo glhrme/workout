@@ -7,17 +7,38 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+
+protocol Coordinator {
+    var childCoordinator: Coordinator? { get set }
+    var navigationController: UINavigationController!  { get set }
+    var viewController: UIViewController?  { get set }
+    
+    func start(viewController: UIViewController) -> Void
+}
 
 class AppCoordinator {
-    private var navigationController: UINavigationController?
+    var childCoordinator: Coordinator?
     
-    var vc: LoginViewController?
+    var navigationController: UINavigationController!
+    
+    var viewController: UIViewController?
     
     func start(window: UIWindow) {
         let controller = LoginViewController()
-        self.vc = controller
+        controller.coordinatorDelegate = self
+        self.viewController = controller
         self.navigationController = UINavigationController(rootViewController: controller)
         window.rootViewController = self.navigationController
         window.makeKeyAndVisible()
+    }
+}
+
+extension AppCoordinator: LoginCoordinatorDelegate {
+    func goToHome(user: User) {
+        let coordinator = HomeCoordinator()
+        coordinator.navigationController = self.navigationController
+        childCoordinator = coordinator
+        childCoordinator?.start(viewController: HomeViewController())
     }
 }

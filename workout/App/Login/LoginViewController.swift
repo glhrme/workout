@@ -8,8 +8,16 @@
 import UIKit
 import FirebaseAuthUI
 import FirebaseOAuthUI
+import FirebaseAuth
+
+protocol LoginCoordinatorDelegate: AnyObject {
+    func goToHome(user: User) -> Void
+}
 
 class LoginViewController: BaseViewController<LoginView> {
+    
+    weak var coordinatorDelegate: LoginCoordinatorDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customView.loginButton.addTarget(self, action: #selector(self.didTapLoginButton(sender:)), for: .touchUpInside)
@@ -31,7 +39,7 @@ extension LoginViewController {
 extension LoginViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if let user = authDataResult?.user {
-            print(user.email ?? "private e-mail")
+            self.coordinatorDelegate?.goToHome(user: user)
         }
     }
 }
