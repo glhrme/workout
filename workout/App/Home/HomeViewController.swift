@@ -10,4 +10,11 @@ import UIKit
 
 class HomeViewController: BaseViewController<HomeView> {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
 }
