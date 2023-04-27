@@ -33,4 +33,10 @@ class HomeViewModel {
         }
     }
     
+    func delete(item: Workout, finish: @escaping () -> Void) {
+        workoutManager.delete(workout: item)
+        fetchAll()
+        finish()
+    }
+    
 }

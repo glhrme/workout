@@ -35,6 +35,18 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = UIContextualAction(style: .destructive, title: "Deletar") {  (contextualAction, view, boolValue) in
+            self.viewModel.delete(item: self.viewModel.workouts[indexPath.row]) {
+                tableView.reloadData()
+            }
+        }
+        item.image = UIImage(systemName: "minus.circle.fill")
+        let swipeActions = UISwipeActionsConfiguration(actions: [item])
+        
+        return swipeActions
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
