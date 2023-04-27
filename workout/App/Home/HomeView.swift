@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+protocol HomeViewDelegate: AnyObject {
+    func goToCreate() -> Void
+}
+
 class HomeView: BaseUIView {
+    
+    weak var delegate: HomeViewDelegate?
     
     lazy var container: UIView = {
         let view = UIView()
@@ -34,15 +40,32 @@ class HomeView: BaseUIView {
         return table
     }()
     
+    lazy var createButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .customBlue
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Criar treino", for: .normal)
+        button.titleLabel?.font = .usePoppins(.semiBold, size: 20)
+        button.layer.cornerRadius = 24
+        button.addTarget(self, action: #selector(goToCreate), for: .touchUpInside)
+        return button
+    }()
+    
     init() {
         super.init(frame: .zero)
         self.setupView()
     }
     
-    func setupDelegate(delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    func setup(delegate: UITableViewDelegate, dataSource: UITableViewDataSource, viewDelegate: HomeViewDelegate) {
         self.tableView.delegate = delegate
         self.tableView.dataSource = dataSource
+        self.delegate = viewDelegate
         self.tableView.reloadData()
+    }
+    
+    @objc func goToCreate() {
+        self.delegate?.goToCreate()
     }
 }
 
@@ -51,6 +74,7 @@ extension HomeView: ViewCode {
         self.addSubview(container)
         self.container.addSubview(titleLabel)
         self.container.addSubview(tableView)
+        self.container.addSubview(createButton)
     }
     
     func setupConstraints() {
@@ -66,7 +90,11 @@ extension HomeView: ViewCode {
             self.tableView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
             self.tableView.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.container.bottomAnchor)
+            self.createButton.heightAnchor.constraint(equalToConstant: 40),
+            self.createButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 16),
+            self.createButton.bottomAnchor.constraint(equalTo: self.container.bottomAnchor),
+            self.createButton.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
+            self.createButton.trailingAnchor.constraint(equalTo: self.container.trailingAnchor)
         ])
     }
     

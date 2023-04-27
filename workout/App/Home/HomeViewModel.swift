@@ -13,15 +13,33 @@ class HomeViewModel {
     
     var workouts: Array<Workout> = []
     
+    let stack: CoreDataStack
+    let context: NSManagedObjectContext
+    let workoutManager: WorkoutManager
+    
+    init() {
+        stack = CoreDataStack(modelName: "Database")
+        context = stack.persistentContainer.viewContext
+        workoutManager = WorkoutManager(context: context)
+    }
+    
+    func fetchAll() {
+        let workouts = workoutManager.fetchAll()
+        
+        workouts.forEach { work in
+            self.workouts.append(work)
+        }
+    }
+    
     func createWorkout() {
         let stack = CoreDataStack(modelName: "Database")
         let context = stack.persistentContainer.viewContext
-        let workout = WorkoutManager(context: context)
+        let workoutManager = WorkoutManager(context: context)
         
-        let newWorkout = workout.create(name: "A", desc: "Peito")
+        let newWorkout = workoutManager.create(name: "A", desc: "Peito")
         stack.saveContext()
         
-        let workouts = workout.fetchAll()
+        let workouts = workoutManager.fetchAll()
         
         workouts.forEach { work in
             self.workouts.append(work)

@@ -11,6 +11,9 @@ import UIKit
 class HomeViewController: BaseViewController<HomeView> {
     
     let viewModel: HomeViewModel
+    weak var coordinatorDelegate: HomeCoordinatorDelegate?
+    
+    
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -19,11 +22,11 @@ class HomeViewController: BaseViewController<HomeView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.customView.setupDelegate(delegate: self, dataSource: self)
+        self.customView.setup(delegate: self, dataSource: self, viewDelegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.viewModel.createWorkout()
+        self.viewModel.fetchAll()
         self.customView.tableView.reloadData()
     }
 }
@@ -43,5 +46,11 @@ extension HomeViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeViewCell.identifier) as? HomeViewCell else { return  UITableViewCell() }
         cell.setup(title: self.viewModel.workouts[indexPath.row].name ?? "", desc: self.viewModel.workouts[indexPath.row].desc ?? "")
         return cell
+    }
+}
+
+extension HomeViewController: HomeViewDelegate {
+    func goToCreate() {
+        self.coordinatorDelegate?.goToCreateWorkout()
     }
 }
