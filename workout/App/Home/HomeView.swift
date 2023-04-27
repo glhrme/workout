@@ -83,7 +83,7 @@ extension HomeView: ViewCode {
             self.container.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
             self.container.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             self.container.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            self.titleLabel.topAnchor.constraint(equalTo: self.container.topAnchor, constant: 32),
+            self.titleLabel.topAnchor.constraint(equalTo: self.container.topAnchor),
             self.titleLabel.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
             self.titleLabel.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
             self.titleLabel.heightAnchor.constraint(equalToConstant: 48),
