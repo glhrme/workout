@@ -19,7 +19,7 @@ class WorkoutManager {
         workout.name = name
         workout.desc = desc
         workout.timestamp = Date()
-        workout.id = UUID().uuidString
+        workout.id = UUID()
         return workout
     }
     
@@ -31,6 +31,16 @@ class WorkoutManager {
         } catch {
             print("Failed to fetch workouts: \(error)")
             return []
+        }
+    }
+    
+    func save() -> Bool {
+        do {
+            try context.save()
+            return true
+        } catch {
+            print(error)
+            return false
         }
     }
     

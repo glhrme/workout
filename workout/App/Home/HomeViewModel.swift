@@ -11,11 +11,21 @@ import CoreData
 
 class HomeViewModel {
     
-    func save() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        let managedContext = appDelegate!.persistentContainer.viewContext
-        let workoutEntity = NSEntityDescription.entity(forEntityName: "Workout", in: managedContext)!
-        let workout = WorkoutModel(entity: workoutEntity, insertInto: managedContext)
+    var workouts: Array<Workout> = []
+    
+    func createWorkout() {
+        let stack = CoreDataStack(modelName: "Database")
+        let context = stack.persistentContainer.viewContext
+        let workout = WorkoutManager(context: context)
+        
+        let newWorkout = workout.create(name: "A", desc: "Peito")
+        stack.saveContext()
+        
+        let workouts = workout.fetchAll()
+        
+        workouts.forEach { work in
+            self.workouts.append(work)
+        }
     }
-
+    
 }

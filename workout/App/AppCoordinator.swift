@@ -39,6 +39,6 @@ extension AppCoordinator: LoginCoordinatorDelegate {
         let coordinator = HomeCoordinator()
         coordinator.navigationController = self.navigationController
         childCoordinator = coordinator
-        childCoordinator?.start(viewController: HomeViewController())
+        childCoordinator?.start(viewController: HomeViewController(viewModel: .init()))
     }
 }
