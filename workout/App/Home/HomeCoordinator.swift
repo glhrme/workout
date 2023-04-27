@@ -10,6 +10,7 @@ import UIKit
 
 protocol HomeCoordinatorDelegate: AnyObject {
     func goToCreateWorkout() -> Void
+    func goToWorkoutDetail(item: Workout) -> Void
 }
 
 class HomeCoordinator: Coordinator {
@@ -33,6 +34,11 @@ class HomeCoordinator: Coordinator {
 extension HomeCoordinator: HomeCoordinatorDelegate {
     func goToCreateWorkout() {
         let viewController = CreateWorkoutViewController(viewModel: .init())
+        self.navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func goToWorkoutDetail(item: Workout) {
+        let viewController = WorkoutDetailViewController(viewModel: .init(workout: item))
         self.navigationController.pushViewController(viewController, animated: true)
     }
 }

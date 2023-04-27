@@ -36,7 +36,6 @@ class HomeView: BaseUIView {
         table.register(HomeViewCell.self, forCellReuseIdentifier: HomeViewCell.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = .white
-        table.allowsSelection = false
         return table
     }()
     

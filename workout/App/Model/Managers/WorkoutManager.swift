@@ -46,5 +46,6 @@ class WorkoutManager {
     
     func delete(workout: Workout) {
         context.delete(workout)
+        save()
     }
 }

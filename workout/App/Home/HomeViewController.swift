@@ -47,6 +47,11 @@ extension HomeViewController: UITableViewDelegate {
         
         return swipeActions
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.coordinatorDelegate?.goToWorkoutDetail(item: self.viewModel.workouts[indexPath.row])
+    }
+
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -57,6 +62,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: HomeViewCell.identifier) as? HomeViewCell else { return  UITableViewCell() }
         cell.setup(title: self.viewModel.workouts[indexPath.row].name ?? "", desc: self.viewModel.workouts[indexPath.row].desc ?? "")
+        cell.selectionStyle = .none
         return cell
     }
 }
