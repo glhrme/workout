@@ -20,7 +20,7 @@ extension Workout {
     @NSManaged public var name: String?
     @NSManaged public var desc: String?
     @NSManaged public var timestamp: Date?
-    @NSManaged public var exercises: NSSet?
+    @NSManaged public var exercises: Set<Exercise>?
 
 }
 

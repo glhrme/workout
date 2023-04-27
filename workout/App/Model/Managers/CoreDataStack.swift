@@ -10,6 +10,8 @@ import CoreData
 class CoreDataStack {
     private let modelName: String
     
+    static let shared = CoreDataStack(modelName: "Database")
+    
     init(modelName: String) {
         self.modelName = modelName
     }

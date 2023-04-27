@@ -20,6 +20,7 @@ class ExerciseManager {
         exercise.notes = notes ?? ""
         exercise.image = image ?? ""
         exercise.workout = workout
+        exercise.id = UUID()
         return exercise
     }
     

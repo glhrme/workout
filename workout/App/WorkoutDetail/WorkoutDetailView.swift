@@ -8,7 +8,7 @@
 import UIKit
 
 protocol WorkoutDetailViewDelegate: AnyObject {
-
+    func addExercise() -> Void
 }
 
 class WorkoutDetailView: BaseUIView {
@@ -38,6 +38,18 @@ class WorkoutDetailView: BaseUIView {
         return table
     }()
     
+    lazy var addButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .customBlue
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("Adicionar Exercício", for: .normal)
+        button.titleLabel?.font = .usePoppins(.semiBold, size: 20)
+        button.layer.cornerRadius = 24
+        button.addTarget(self, action: #selector(addExercise), for: .touchUpInside)
+        return button
+    }()
+    
     init() {
         super.init(frame: .zero)
         self.setupView()
@@ -52,11 +64,15 @@ class WorkoutDetailView: BaseUIView {
         self.delegate = viewDelegate
         self.tableView.reloadData()
     }
+    
+    @objc func addExercise() {
+        self.delegate?.addExercise()
+    }
 }
 
 extension WorkoutDetailView: ViewCode {
     func buildViewHierrachy() {
-        [titleLabel, descLabel, tableView].forEach { self.addSubview($0) }
+        [titleLabel, descLabel, addButton, tableView].forEach { self.addSubview($0) }
     }
     
     func setupConstraints() {
@@ -70,7 +86,12 @@ extension WorkoutDetailView: ViewCode {
             descLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             descLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             
-            tableView.topAnchor.constraint(equalTo: descLabel.bottomAnchor, constant: 8),
+            addButton.topAnchor.constraint(equalTo: descLabel.bottomAnchor, constant: 16),
+            addButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            addButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            addButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            tableView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16)

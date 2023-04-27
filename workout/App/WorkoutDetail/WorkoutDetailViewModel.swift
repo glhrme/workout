@@ -6,11 +6,27 @@
 //
 
 import Foundation
+import CoreData
 
 class WorkoutDetailViewModel {
-    let workout: Workout
+    var workout: Workout
+    
+    let stack: CoreDataStack
+    let context: NSManagedObjectContext
+    let workoutManager: WorkoutManager
     
     init(workout: Workout) {
         self.workout = workout
+        stack = CoreDataStack.shared
+        context = stack.persistentContainer.viewContext
+        workoutManager = WorkoutManager(context: context)
+    }
+    
+    func fetch(completion: @escaping () -> Void) {
+        guard let id = self.workout.id else { return }
+        guard let workout = workoutManager.fetch(id: id) else { return }
+        
+        self.workout = workout
+        completion()
     }
 }

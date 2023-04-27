@@ -18,7 +18,7 @@ class HomeViewModel {
     let workoutManager: WorkoutManager
     
     init() {
-        stack = CoreDataStack(modelName: "Database")
+        stack = CoreDataStack.shared
         context = stack.persistentContainer.viewContext
         workoutManager = WorkoutManager(context: context)
     }

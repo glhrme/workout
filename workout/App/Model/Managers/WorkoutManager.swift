@@ -34,6 +34,19 @@ class WorkoutManager {
         }
     }
     
+    func fetch(id: UUID) -> Workout? {
+        let fetchRequest: NSFetchRequest<Workout> = Workout.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
+            fetchRequest.predicate = predicate
+        do {
+            let workout = try context.fetch(fetchRequest)
+            return workout.first
+        } catch {
+            print("Failed to fetch workout: \(error)")
+            return nil
+        }
+    }
+    
     func save() -> Bool {
         do {
             try context.save()

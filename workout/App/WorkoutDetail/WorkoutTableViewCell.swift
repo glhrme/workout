@@ -33,11 +33,13 @@ class WorkoutTableViewCell: UITableViewCell {
         return view
     }()
     
-    func setup(title: String, notes: String) {
+    func setup(title: String, notes: String, imageUrl: String) {
         self.titleLabel.text = title
         self.notesLabel.text = notes
         
         self.backgroundColor = .white
+        
+        self.viewImage.load(url: .init(string: imageUrl)!)
         
         [titleLabel, notesLabel, viewImage].forEach { self.contentView.addSubview($0) }
         

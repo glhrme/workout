@@ -15,16 +15,12 @@ class CreateWorkoutViewModel {
     let workoutManager: WorkoutManager
     
     init() {
-        stack = CoreDataStack(modelName: "Database")
+        stack = CoreDataStack.shared
         context = stack.persistentContainer.viewContext
         workoutManager = WorkoutManager(context: context)
     }
     
     func createWorkout(name: String, desc: String, finish: @escaping () -> Void) {
-        let stack = CoreDataStack(modelName: "Database")
-        let context = stack.persistentContainer.viewContext
-        let workoutManager = WorkoutManager(context: context)
-        
         let newWorkout = workoutManager.create(name: name, desc: desc)
         stack.saveContext()
         finish()
