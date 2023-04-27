@@ -41,7 +41,8 @@
 		11F15B8629FA1620006A39D3 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F15B8529FA1620006A39D3 /* Font+Extension.swift */; };
 		11F15B8829FA17E1006A39D3 /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F15B8729FA17E1006A39D3 /* HomeViewCell.swift */; };
 		11F15B8E29FA25C3006A39D3 /* CreateWorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F15B8C29FA25C3006A39D3 /* CreateWorkoutViewController.swift */; };
-		11F15B8F29FA25C3006A39D3 /* CreateWorkoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11F15B8D29FA25C3006A39D3 /* CreateWorkoutViewController.xib */; };
+		11F15B9129FAA324006A39D3 /* CreateWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F15B9029FAA324006A39D3 /* CreateWorkoutView.swift */; };
+		11F15B9329FAA9A5006A39D3 /* CreateWorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F15B9229FAA9A5006A39D3 /* CreateWorkoutViewModel.swift */; };
 		3CAD9513B02BAA738C17E007 /* Pods_workout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85533DFA92FACE17546DE7DC /* Pods_workout.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +84,8 @@
 		11F15B8529FA1620006A39D3 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		11F15B8729FA17E1006A39D3 /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		11F15B8C29FA25C3006A39D3 /* CreateWorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkoutViewController.swift; sourceTree = "<group>"; };
-		11F15B8D29FA25C3006A39D3 /* CreateWorkoutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateWorkoutViewController.xib; sourceTree = "<group>"; };
+		11F15B9029FAA324006A39D3 /* CreateWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkoutView.swift; sourceTree = "<group>"; };
+		11F15B9229FAA9A5006A39D3 /* CreateWorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWorkoutViewModel.swift; sourceTree = "<group>"; };
 		85533DFA92FACE17546DE7DC /* Pods_workout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_workout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE65EA56601D7DD790FB33DF /* Pods-workout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workout.debug.xcconfig"; path = "Target Support Files/Pods-workout/Pods-workout.debug.xcconfig"; sourceTree = "<group>"; };
 		C2BFFB9B7B1834D85DB20793 /* Pods-workout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-workout.release.xcconfig"; path = "Target Support Files/Pods-workout/Pods-workout.release.xcconfig"; sourceTree = "<group>"; };
@@ -230,7 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				11F15B8C29FA25C3006A39D3 /* CreateWorkoutViewController.swift */,
-				11F15B8D29FA25C3006A39D3 /* CreateWorkoutViewController.xib */,
+				11F15B9029FAA324006A39D3 /* CreateWorkoutView.swift */,
+				11F15B9229FAA9A5006A39D3 /* CreateWorkoutViewModel.swift */,
 			);
 			path = CreateWorkout;
 			sourceTree = "<group>";
@@ -318,7 +321,6 @@
 				11F15B8129FA14DB006A39D3 /* Poppins-Medium.ttf in Resources */,
 				11BB11F929F86ABE007AEBA5 /* LaunchScreen.storyboard in Resources */,
 				11F15B8329FA14DB006A39D3 /* Poppins-Regular.ttf in Resources */,
-				11F15B8F29FA25C3006A39D3 /* CreateWorkoutViewController.xib in Resources */,
 				11F15B8229FA14DB006A39D3 /* Poppins-Bold.ttf in Resources */,
 				11F15B7E29FA14DB006A39D3 /* Poppins-SemiBold.ttf in Resources */,
 				11BB11F629F86ABE007AEBA5 /* Assets.xcassets in Resources */,
@@ -417,7 +419,9 @@
 				11BB121E29F8705A007AEBA5 /* BaseUIView.swift in Sources */,
 				11F15B7329F9F7EF006A39D3 /* WorkoutManager.swift in Sources */,
 				11583A0129F8A0230087F688 /* HomeCoordinator.swift in Sources */,
+				11F15B9129FAA324006A39D3 /* CreateWorkoutView.swift in Sources */,
 				11F15B8E29FA25C3006A39D3 /* CreateWorkoutViewController.swift in Sources */,
+				11F15B9329FAA9A5006A39D3 /* CreateWorkoutViewModel.swift in Sources */,
 				11F15B4A29F9EE92006A39D3 /* Database.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

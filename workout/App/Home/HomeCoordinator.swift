@@ -32,7 +32,7 @@ class HomeCoordinator: Coordinator {
 
 extension HomeCoordinator: HomeCoordinatorDelegate {
     func goToCreateWorkout() {
-        let viewController = CreateWorkoutViewController()
+        let viewController = CreateWorkoutViewController(viewModel: .init())
         self.navigationController.pushViewController(viewController, animated: true)
     }
 }

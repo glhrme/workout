@@ -26,20 +26,7 @@ class HomeViewModel {
     func fetchAll() {
         let workouts = workoutManager.fetchAll()
         
-        workouts.forEach { work in
-            self.workouts.append(work)
-        }
-    }
-    
-    func createWorkout() {
-        let stack = CoreDataStack(modelName: "Database")
-        let context = stack.persistentContainer.viewContext
-        let workoutManager = WorkoutManager(context: context)
-        
-        let newWorkout = workoutManager.create(name: "A", desc: "Peito")
-        stack.saveContext()
-        
-        let workouts = workoutManager.fetchAll()
+        self.workouts.removeAll()
         
         workouts.forEach { work in
             self.workouts.append(work)
