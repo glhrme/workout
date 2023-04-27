@@ -90,7 +90,7 @@ extension HomeView: ViewCode {
             self.tableView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16),
             self.tableView.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.container.trailingAnchor),
-            self.createButton.heightAnchor.constraint(equalToConstant: 40),
+            self.createButton.heightAnchor.constraint(equalToConstant: 50),
             self.createButton.topAnchor.constraint(equalTo: self.tableView.bottomAnchor, constant: 16),
             self.createButton.bottomAnchor.constraint(equalTo: self.container.bottomAnchor),
             self.createButton.leadingAnchor.constraint(equalTo: self.container.leadingAnchor),
